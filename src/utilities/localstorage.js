@@ -17,4 +17,4 @@ const addToLS = (id) => {
   saveCartToLs(cart);
 };
 
-export { addToLS };
+export { addToLS, getStoredCard };
