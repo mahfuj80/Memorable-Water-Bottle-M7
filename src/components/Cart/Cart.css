@@ -1,0 +1,6 @@
+.cart-container img {
+  width: 100px;
+  margin-right: 10px;
+  border: 2px solid steelblue;
+  border-radius: 10px;
+}
