@@ -1,3 +1,4 @@
+import propTypes from 'prop-types';
 import './Bottle.css';
 
 const Bottle = ({ bottle, handleAddToCart }) => {
@@ -10,6 +11,11 @@ const Bottle = ({ bottle, handleAddToCart }) => {
       <button onClick={() => handleAddToCart(bottle)}>Purchase</button>
     </div>
   );
+};
+
+Bottle.propTypes = {
+  bottle: propTypes.object.isRequired,
+  handleAddToCart: propTypes.func.isRequired,
 };
 
 export default Bottle;

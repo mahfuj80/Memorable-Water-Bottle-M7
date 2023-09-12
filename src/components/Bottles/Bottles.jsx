@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import Bottle from '../Bottle/Bottle';
 import './Bottles.css';
-import { addToLS, getStoredCard } from '../../utilities/localstorage';
+import {
+  addToLS,
+  getStoredCard,
+  removeFromLS,
+} from '../../utilities/localstorage';
 import Cart from '../Cart/Cart';
 
 const Bottles = () => {
@@ -39,10 +43,18 @@ const Bottles = () => {
     addToLS(bottle.id);
   };
 
+  const handleRemoveFromCart = (id) => {
+    // visual cart remove
+    const remainingCart = cart.filter((bottle) => bottle.id !== id);
+    setCart(remainingCart);
+    // remove from LS
+    removeFromLS(id);
+  };
+
   return (
     <div>
       <h2>Bottles Category: {bottles.length}</h2>
-      <Cart cart={cart}></Cart>
+      <Cart handleRemoveFromCart={handleRemoveFromCart} cart={cart}></Cart>
       <div className="bottle-container">
         {bottles.map((bottle) => (
           <Bottle
